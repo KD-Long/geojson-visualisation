@@ -137,7 +137,7 @@ function latLngToMercator(longitude, latitude) {
     return [x, y]; // Return as an array [x, y]
   }
 
-// // Recursive function to convert coordinates within an object
+// // Recursive function to convert coordinates within anobject
 // function convertObjectCoordinatesToMercator(obj) {
 //     if (Array.isArray(obj)) {
 //       // If obj is an array, recursively convert its elements
