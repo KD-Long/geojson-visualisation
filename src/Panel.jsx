@@ -7,6 +7,16 @@ import { useState, useEffect, useMemo } from 'react';
 import defaultData from './australian-states.json'
 
 
+import {
+  Button,
+  Typography,
+  Container,
+  Box,
+
+} from '@mui/material';
+
+
+
 
 export default function Panel({ onGeoJsonChange, onMercator }) {
 
@@ -44,26 +54,44 @@ export default function Panel({ onGeoJsonChange, onMercator }) {
         // const scaledGeoJSON = JSON.parse(scaledJSONString);
 
         //lifting state up to app to pass down to pannel
-        const jsonString = JSON.stringify(json);
-        const mercatorCoords =  scaleNumbersInJSON(jsonString)
-        const scaledGeoJSON = JSON.parse(mercatorCoords);
-        onMercator(scaledGeoJSON)
+        // const jsonString = JSON.stringify(json);
+        // const mercatorCoords =  scaleNumbersInJSON(jsonString)
+        // const scaledGeoJSON = JSON.parse(mercatorCoords);
+        // onMercator(scaledGeoJSON)
         // console.log(scaledGeoJSON)
 
         // Will only get to this code if Try is sucessfull
+
         onGeoJsonChange(json);
     }
 
     // Calculate bigest diameter
+    const buttonStyle = {
+        backgroundColor: 'blue',
+        color: 'white',
+        fontSize: '16px',
+        width: '50%',
+        textAlign: 'center',
+      };
 
 
     return <div className='panel'>
         <div className="playground-container">
-            <header>Add your own .geojson data.</header>
+            {/* <header>Add your own .geojson data.</header>
 
             <div className="center-button-container">
                 <button className='sub-button' onClick={handleButtonClick}>Submit</button>
-            </div>
+            </div> */}
+
+            <header>Add your own .geojson data.</header>
+
+                <div style={{ textAlign: 'center', marginTop: '10px', marginBottom: '10px' }}>
+                <Button variant="contained" style={buttonStyle} onClick={handleButtonClick}>
+                    Submit
+                </Button>
+                </div>
+
+
 
 
             <div className="playground-panel">
@@ -164,4 +192,3 @@ function latLngToMercator(longitude, latitude) {
 //     }
 //     return obj;
 //   }
-

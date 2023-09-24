@@ -38,7 +38,7 @@ export default function Experience({geoJsonData,mercatorData}) {
         <GeoJsonFromText geoJsonData={geoJsonData} />
 
 
-        <OverlayMercator mercatorData={mercatorData} />
+        {/* <OverlayMercator mercatorData={mercatorData} /> */}
    
 
     </>
