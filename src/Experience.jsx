@@ -24,9 +24,7 @@ export default function Experience({geoJsonData,mercatorData}) {
 
 
 
-        {/* SHERE */}
-
-
+        {/* SPHERE */}
         <Sphere />
 
 

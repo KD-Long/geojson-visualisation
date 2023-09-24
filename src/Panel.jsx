@@ -53,19 +53,24 @@ export default function Panel({ onGeoJsonChange, onMercator }) {
         // // Parse the scaled JSON string back to a JavaScript object
         // const scaledGeoJSON = JSON.parse(scaledJSONString);
 
-        //lifting state up to app to pass down to pannel
-        // const jsonString = JSON.stringify(json);
-        // const mercatorCoords =  scaleNumbersInJSON(jsonString)
-        // const scaledGeoJSON = JSON.parse(mercatorCoords);
-        // onMercator(scaledGeoJSON)
-        // console.log(scaledGeoJSON)
+       
+        const jsonString = JSON.stringify(json);
+        const scaledString =  scaleNumbersInJSON(jsonString,2)
+        const scaledGeoJSON = JSON.parse(scaledString);
+        
+        console.log(scaledGeoJSON)
 
-        // Will only get to this code if Try is sucessfull
+        // Will only get to this code if Try is successful
+        
+        
+        ///TO DO trying to get scale working fo...... 
 
-        onGeoJsonChange(json);
+
+        onGeoJsonChange(scaledGeoJSON);
+        // onGeoJsonChange(json);
     }
 
-    // Calculate bigest diameter
+    // Calculate biggest diameter
     const buttonStyle = {
         backgroundColor: 'blue',
         color: 'white',
@@ -145,13 +150,14 @@ const scaleNumbersInJSON = (jsonString, scaleFactor=1) => {
   
     const scaledJSON = jsonString.replace(regex, (match) => {
       // Parse the matched number
-      const [longitude, latitude] = match.split(',').map(Number); // Assuming the numbers are separated by a comma
+      let [longitude, latitude] = match.split(',').map(Number); // Assuming the numbers are separated by a comma
   
       // Scale the latitude and longitude values
-      const [scaledLongitude, scaledLatitude] = latLngToMercator(longitude, latitude);
-  
+    //   const [scaledLongitude, scaledLatitude] = latLngToMercator(longitude, latitude);
+    longitude *= scaleFactor
+    latitude *= scaleFactor
       // Return the scaled values as a string
-      return `[${scaledLongitude.toFixed(14)}, ${scaledLatitude.toFixed(14)}, 0]`; // Format as [x, y, z]
+      return `[${longitude.toFixed(14)}, ${latitude.toFixed(14)}]`; // Format as [x, y, z]
     });
     
     return scaledJSON;

@@ -39,9 +39,9 @@ export default function GeoJsonFromText({ geoJsonData }) {
 
               const bbox = new THREE.Box3().setFromObject(groupRef.current);
               const center = new THREE.Vector3( 0, 0, 0 );
-              bbox.getCenter(center) // coppies result of .get center into center vector
+              bbox.getCenter(center) // copies result of .get center into center vector
 
-            // Recalulates camera to look at center of json
+            // Re calculates camera to look at center of json
             const pointToLookThrough = center
             const newCameraPosition = calculateCameraPosition(pointToLookThrough, 300);
             setCameraPosition(newCameraPosition);
@@ -53,28 +53,12 @@ export default function GeoJsonFromText({ geoJsonData }) {
         
             // Update the camera's projection matrix
             camera.updateProjectionMatrix();
-
+            console.log(groupRef)
         }
 
     } , [geo])
 
 
-
-    useFrame((state, delta) => {
-
-        let firstSegment = groupRef.current.children[0]
-        if (firstSegment) {
-            const bs = firstSegment.geometry.boundingSphere
-
-            if (bs) {
-                // console.log(bs.center)
-                //state.camera.lookAt(bs.center)
-            }
-        }
-
-
-
-    })
 
     return <group ref={groupRef}>
         {!geo ? null : (
