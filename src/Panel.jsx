@@ -66,7 +66,7 @@ export default function Panel({ onGeoJsonChange, onMercator }) {
         ///TO DO trying to get scale working fo...... 
 
 
-        onGeoJsonChange(scaledGeoJSON);
+        onGeoJsonChange(json);
         // onGeoJsonChange(json);
     }
 
